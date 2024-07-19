@@ -27,10 +27,10 @@ def clean_df(df : pd.DataFrame)-> Tuple[
     try:
         process_strategy = DataPreprocessStrategy()
         data_cleaning = DataCleaning(df , process_strategy)
-        processed_data = DataCleaning.handle_data()
+        processed_data = data_cleaning.handle_data()
 
         divide_strategy = DataDivideStrategy()
-        data_cleaning = DataCleaning(df,divide_strategy)
+        data_cleaning = DataCleaning(processed_data,divide_strategy)
         X_train , X_test , y_train , y_test = data_cleaning.handle_data()
         
         logging.info("Data cleaning completed")
